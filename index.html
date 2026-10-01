@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月銷售額圖表與佈局範例</title>
+    <!-- 引入 Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Verdana, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+        .menu {
+            float: left;
+            width: 20%;
+            text-align: center;
+        }
+        .menu a {
+            background-color: #e5e5e5;
+            padding: 8px;
+            margin-top: 7px;
+            display: block;
+            width: 100%;
+            color: black;
+            text-decoration: none;
+        }
+        .main {
+            float: left;
+            width: 60%;
+            padding: 0 20px;
+        }
+        .right {
+            background-color: #e5e5e5;
+            float: left;
+            width: 20%;
+            padding: 15px;
+            margin-top: 7px;
+            text-align: center;
+        }
+        @media only screen and (max-width: 620px) {
+            /* 手機版型：改為單欄滿版 */
+            .menu, .main, .right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部標題區 -->
+    <div style="background-color:#e5e5e5; padding:15px; text-align:center;">
+        <h1>Hello World</h1>
+    </div>
+
+    <h1 style="text-align: center; margin-top: 20px;">很高興能佔用您的一點寶貴時間</h1>
+      
+    <!-- 圖片展示區 (已修正為相對路徑，請確保圖片檔名正確) -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="images (2).jpg" alt="圖片說明" style="max-width: 100%; height: auto; max-height: 400px;">
+    </div>
+
+    <!-- Chart.js 圖表區 -->
+    <div style="width: 80%; max-width: 600px; margin: auto; margin-bottom: 30px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- 響應式網格導覽與內容區 -->
+    <div style="overflow:auto; padding: 10px;">
+        <div class="menu">
+            <a href="https://bm-architect.wixsite.com/bmportfilio">同一</a>
+            <a href="https://jinzuha.github.io/web/">同二</a>
+            <a href="https://giohrtgesb.github.io/net-homework/">同三</a>
+        </div>
+
+        <div class="main">
+            <h2>Lorum Ipsum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        </div>
+
+        <div class="right">
+            <h2>About</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <div style="background-color:#e5e5e5; text-align:center; padding:10px; margin-top:7px;">
+        &copy; w3schools.com
+    </div>
+
+    <!-- 圖表生成 Script -->
+    <script>
+        const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+        const yValues = [55, 49, 44, 24, 15];
+        const barColors = ["red", "green", "blue", "orange", "brown"];
+
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "World Wine Production 2018",
+                        font: { size: 16 }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
